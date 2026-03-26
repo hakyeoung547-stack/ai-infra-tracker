@@ -7,3 +7,4 @@ logs/
 data/raw/
 data/processed/
 *.ipynb_checkpoints/
+*.svg
