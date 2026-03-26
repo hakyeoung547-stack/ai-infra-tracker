@@ -7,6 +7,7 @@ import yfinance as yf
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
+from src.data.db_manager import init_db, save_prices as db_save_prices
 
 RAW_DIR = Path(__file__).resolve().parents[2] / "data" / "raw" / "prices"
 REF_DIR = Path(__file__).resolve().parents[2] / "data" / "reference"
@@ -54,6 +55,9 @@ def save_prices(data: dict[str, pd.DataFrame]) -> None:
 
 
 if __name__ == "__main__":
+    init_db()
     tickers = load_tickers()
     data = fetch_prices(tickers)
     save_prices(data)
+    for ticker, df in data.items():
+        db_save_prices(ticker, df)

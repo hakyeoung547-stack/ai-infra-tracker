@@ -59,13 +59,16 @@ ai_infra_bottleneck/
 │   ├── processed/                   ← 전처리 완료 데이터 (분석에 직접 사용)
 │   │   ├── returns/                 ← 수익률 계산 결과
 │   │   └── metrics/                 ← 변동성, 샤프지수 등 지표
-│   └── reference/                   ← 직접 만드는 기준 데이터 (수동 관리)
-│       ├── companies.csv            ← 핵심 기업 분류 마스터 테이블
-│       └── sector_weights.csv       ← 섹터 가중치 정의 (선택)
+│   ├── reference/                   ← 직접 만드는 기준 데이터 (수동 관리)
+│   │   ├── companies.csv            ← 핵심 기업 분류 마스터 테이블
+│   │   └── sector_weights.csv       ← 섹터 가중치 정의 (선택)
+│   └── db/                          ← SQLite DB (gitignore. 코드로 재생성 가능)
+│       └── ai_infra.db              ← 주가 데이터 DB (prices 테이블)
 │
 ├── src/                             ← 실제 Python 코드
 │   ├── data/
-│   │   ├── fetch_prices.py          ← yfinance로 주가 수집
+│   │   ├── fetch_prices.py          ← yfinance로 주가 수집 → CSV + DB 동시 저장
+│   │   ├── db_manager.py            ← SQLite 연결·저장·조회 함수 모음
 │   │   ├── fetch_fundamentals.py    ← 재무 데이터 수집
 │   │   └── update_all.py            ← 전체 데이터 일괄 업데이트 (cron 진입점)
 │   │
@@ -215,6 +218,7 @@ streamlit         # 인프라 맵 대시보드 웹앱
 - `data/raw/`는 절대 수정하지 않는다. 원본 보존.
 - 전처리는 항상 `data/processed/`에 새 파일로 저장.
 - `data/reference/companies.csv`는 수동 관리. 스크립트로 덮어쓰지 않는다.
+- `data/db/ai_infra.db`는 gitignore. `db_manager.py`로 언제든 재생성 가능.
 
 ---
 
@@ -406,5 +410,6 @@ jupyter notebook notebooks/
 | 2026-03-13 | bottleneck_framework.md 3단계 판단 프레임워크 완성 (판단기준표 + 신호품질체크 + 최종매트릭스), CLAUDE.md 분석 프레임워크 섹션 업데이트 |
 | 2026-03-16 | 프로젝트 방향 재정의 — 두 트랙(투자 학습 + 스킬 구축) 명시, Phase 1 솔직한 스코프(섹터 모멘텀 + 동적 인프라 맵)로 업데이트, infra_map.py 스켈레톤 생성, networkx·pyvis·streamlit 추가 |
 | 2026-03-25 | 데이터 소스 이중 구조 확정 — yfinance(주가·모멘텀, Phase 1) + SEC EDGAR API(수주잔고·마진·실물, Phase 2), Phase 2 설명 업데이트, 공급 제약 지표 수집 방법 SEC EDGAR 기준으로 수정, docs/api_guide.md에 SEC EDGAR 섹션 추가 |
+| 2026-03-26 | SQLite 레이어 추가 — db_manager.py 생성, fetch_prices.py에 CSV+DB 동시 저장 연결, .gitignore에 data/db/ 추가, guide.md 용어 정리 섹션 추가, README 폴더 구조 수정 |
 
 > 작업할 때마다 이 테이블에 한 줄씩 추가한다.

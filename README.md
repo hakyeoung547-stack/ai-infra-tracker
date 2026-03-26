@@ -46,7 +46,8 @@ aI_auto/                          # 레포 루트
 │   ├── data/
 │   │   ├── raw/          # 원본 데이터 (수정 금지)
 │   │   ├── processed/    # 전처리 완료 데이터
-│   │   └── reference/    # companies.csv 등 기준 데이터 (수동 관리)
+│   │   ├── reference/    # companies.csv 등 기준 데이터 (수동 관리)
+│   │   └── db/           # SQLite DB (gitignore)
 │   ├── src/
 │   │   ├── data/         # fetch_prices.py, fetch_fundamentals.py
 │   │   ├── analysis/     # returns.py, bottleneck_score.py, sector_compare.py

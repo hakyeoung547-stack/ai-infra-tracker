@@ -6,5 +6,6 @@ __pycache__/
 logs/
 data/raw/
 data/processed/
+data/db/
 *.ipynb_checkpoints/
 *.svg
