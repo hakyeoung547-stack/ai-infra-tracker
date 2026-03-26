@@ -50,7 +50,11 @@ def save_prices(ticker: str, df: pd.DataFrame) -> None:
     """
     df_db = df.copy()
     df_db.index = pd.to_datetime(df_db.index).strftime("%Y-%m-%d")
-    df_db.columns = [c.lower() for c in df_db.columns]
+    # yfinance 최신 버전은 MultiIndex 컬럼 반환 — 첫 번째 레벨(컬럼명)만 추출
+    if isinstance(df_db.columns, pd.MultiIndex):
+        df_db.columns = [c[0].lower() for c in df_db.columns]
+    else:
+        df_db.columns = [c.lower() for c in df_db.columns]
     df_db = df_db[["open", "high", "low", "close", "volume"]]
     df_db.insert(0, "ticker", ticker)
     df_db.index.name = "date"

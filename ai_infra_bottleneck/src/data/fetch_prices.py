@@ -33,7 +33,7 @@ def fetch_prices(tickers: list[str], period: str = "2y") -> dict[str, pd.DataFra
     results = {}
     for ticker in tickers:
         try:
-            df = yf.download(ticker, period=period, auto_adjust=True, progress=False)
+            df = yf.Ticker(ticker).history(period=period, auto_adjust=True)
             if df.empty:
                 print(f"[WARN] {ticker}: 데이터 없음")
                 continue
@@ -45,13 +45,14 @@ def fetch_prices(tickers: list[str], period: str = "2y") -> dict[str, pd.DataFra
 
 
 def save_prices(data: dict[str, pd.DataFrame]) -> None:
-    """수집한 주가 데이터를 CSV로 저장한다."""
+    """수집한 주가 데이터를 CSV + DB에 동시 저장한다."""
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     today = datetime.today().strftime("%Y%m%d")
     for ticker, df in data.items():
         path = RAW_DIR / f"{ticker}_{today}.csv"
         df.to_csv(path)
-        print(f"[SAVE] {path}")
+        print(f"[SAVE CSV] {path}")
+        db_save_prices(ticker, df)
 
 
 if __name__ == "__main__":
@@ -59,5 +60,3 @@ if __name__ == "__main__":
     tickers = load_tickers()
     data = fetch_prices(tickers)
     save_prices(data)
-    for ticker, df in data.items():
-        db_save_prices(ticker, df)
