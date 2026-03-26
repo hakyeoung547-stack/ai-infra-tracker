@@ -1,0 +1,14 @@
+ticker,company,sector,sub_sector,exchange,country,bottleneck_relevance,supply_side,demand_driver,phase,notes
+NVDA,NVIDIA,semiconductor,gpu_design,NASDAQ,US,high,Y,N,1,AI GPU 시장 사실상 독점. H100/H200/B200 공급이 AI 클러스터 확장 속도 결정
+AMD,Advanced Micro Devices,semiconductor,gpu_design,NASDAQ,US,mid,Y,N,1,NVIDIA 대안 GPU(MI300X). 점유율 확대 가능성
+TSM,TSMC,semiconductor,foundry,NYSE,TW,high,Y,N,1,최첨단 칩 생산 거의 독점. 지정학적 리스크 존재
+AMAT,Applied Materials,semiconductor,equipment,NASDAQ,US,mid,Y,N,1,반도체 장비 1위. 파운드리 증설 수혜
+LRCX,Lam Research,semiconductor,equipment,NASDAQ,US,mid,Y,N,1,식각 장비 핵심 공급사
+NEE,NextEra Energy,power_utility,renewable,NYSE,US,mid,N,N,1,미국 최대 재생에너지 발전사. 데이터센터 전력 PPA 계약 증가
+CEG,Constellation Energy,power_utility,nuclear,NASDAQ,US,high,Y,N,1,원전 재가동(Three Mile Island). 빅테크 청정전력 수요 직접 수혜
+ETR,Entergy,power_utility,utility,NYSE,US,low,Y,N,1,남부 전력 유틸리티. 데이터센터 집중 지역 전력 공급
+ETN,Eaton,power_equipment,power_mgmt,NYSE,US,high,Y,N,1,데이터센터용 전력 관리 장비(PDU, UPS) 핵심 공급사. 수주잔고 급증
+PWR,Quanta Services,power_utility,grid_infra,NYSE,US,high,Y,N,1,송전망 시공 1위. 전력 인프라 병목 해소 핵심 업체
+SMCI,Super Micro Computer,power_equipment,server_power,NASDAQ,US,mid,Y,N,1,AI 서버 직접 조립. 전력효율·냉각 통합 솔루션
+VRT,Vertiv,cooling,liquid_cooling,NYSE,US,high,Y,N,1,데이터센터 냉각 인프라 1위. 액체냉각 전환 최대 수혜
+MOD,Modine Manufacturing,cooling,thermal_mgmt,NYSE,US,mid,Y,N,1,열관리 부품 공급. 고밀도 서버 냉각 수요 증가 수혜
