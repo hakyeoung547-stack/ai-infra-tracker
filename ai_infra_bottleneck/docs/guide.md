@@ -142,6 +142,33 @@ data/signals/
 | **수주잔고** | 계약은 됐지만 아직 납품 안 된 주문 총액. 많을수록 병목 심화 신호 | backlog QoQ +30% = 병목 심화 중 |
 | **book-to-bill** | 신규 수주 / 납품액. 1.0 초과 = 들어오는 게 나가는 것보다 많다 | 1.3 = 병목 압력 높음 |
 
+### 코드 약어 정리
+
+코드에서 자주 등장하는 변수명·컬럼명 약어 모음.
+
+| 약어 | 원래 말 | 뜻 |
+|------|---------|-----|
+| `ret` | return | 수익률 |
+| `ret_1w` | return 1 week | 1주 수익률 |
+| `ret_1m` | return 1 month | 1개월 수익률 |
+| `ret_3m` | return 3 months | 3개월 수익률 |
+| `ret_6m` | return 6 months | 6개월 수익률 |
+| `ret_ytd` | return year-to-date | 연초 대비 수익률 |
+| `vol` | volatility | 변동성 |
+| `vol_30d` | volatility 30 days | 30일 연환산 변동성 |
+| `mdd` | maximum drawdown | 최대낙폭 (고점 대비 최대 하락폭) |
+| `sharpe` | Sharpe ratio | 샤프 지수 (위험 대비 수익) |
+| `rel_to_spy` | relative to SPY | SPY(S&P500) 대비 상대 수익률 |
+| `rel_to_soxx` | relative to SOXX | SOXX(반도체 ETF) 대비 상대 수익률 |
+| `avg_ret` | average return | 평균 수익률 |
+| `df` | DataFrame | pandas 데이터프레임 |
+| `df_prices` | DataFrame prices | 주가 데이터프레임 |
+| `df_returns` | DataFrame returns | 수익률 데이터프레임 |
+| `ticker` | — | 주식 종목 코드 (예: NVDA, AAPL) |
+| `pct` | percent | 퍼센트 |
+| `QoQ` | Quarter over Quarter | 전분기 대비 증가율 |
+| `YoY` | Year over Year | 전년 동기 대비 증가율 |
+
 ---
 
 ## 이 시스템이 해결하려는 문제
