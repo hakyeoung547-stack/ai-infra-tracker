@@ -9,3 +9,4 @@ data/processed/
 data/db/
 *.ipynb_checkpoints/
 *.svg
+notebooks/
