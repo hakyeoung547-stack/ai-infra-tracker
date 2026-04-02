@@ -44,7 +44,6 @@ def calc_bottleneck_score(df: pd.DataFrame) -> pd.DataFrame:
             avg_ret_1w=("ret_1w", "mean"),
             avg_ret_1m=("ret_1m", "mean"),
             avg_ret_3m=("ret_3m", "mean"),
-            avg_ret_6m=("ret_6m", "mean"),
             company_count=("ticker", "count"),
         )
         .round(2)

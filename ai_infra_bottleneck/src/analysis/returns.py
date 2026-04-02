@@ -40,8 +40,9 @@ def calc_returns(prices: pd.Series) -> dict:
         else:
             result[name] = None
 
-    # YTD 수익률
-    year_start = prices[prices.index.year == prices.index[-1].year].iloc[0]
+    # YTD 수익률 — timezone-aware / mixed timezone index 대응
+    idx = pd.to_datetime(prices.index, utc=True).tz_convert(None)
+    year_start = prices[idx.year == idx[-1].year].iloc[0]
     result["ret_ytd"] = round(((prices.iloc[-1] / year_start) - 1) * 100, 2)
 
     return result

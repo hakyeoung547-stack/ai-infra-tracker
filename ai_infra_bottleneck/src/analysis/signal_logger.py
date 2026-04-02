@@ -52,7 +52,7 @@ def _check_q2(weeks_since_breakout) -> str:
 
 def _check_q3(sector_3m: float, spy_3m: float, threshold: float = 5.0) -> str:
     """Q3: 매크로 분리 — 섹터가 SPY 대비 5%p 이상 초과 수익인가"""
-    return "PASS" if (sector_3m - spy_3m) > threshold else "FAIL"
+    return "PASS" if (sector_3m - spy_3m) >= threshold else "FAIL"
 
 
 def determine_signal(

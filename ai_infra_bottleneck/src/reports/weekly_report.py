@@ -12,14 +12,18 @@ weekly_report.py
   weekly_template.md → reports/weekly/YYYY-WW_weekly.md
 """
 
+import sys
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 
-from sector_compare import load_latest_returns, sector_summary, top_performers, bottom_performers
-from bottleneck_score import calc_bottleneck_score
-from investment_signal import build_investment_signal
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
+from src.analysis.sector_compare import load_latest_returns, sector_summary, top_performers, bottom_performers
+from src.analysis.bottleneck_score import calc_bottleneck_score
+from src.analysis.investment_signal import build_investment_signal
 
 REPORTS_DIR = Path(__file__).resolve().parents[2] / "reports" / "weekly"
 TEMPLATE_DIR = Path(__file__).resolve().parent / "templates"
