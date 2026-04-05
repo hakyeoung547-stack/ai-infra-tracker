@@ -43,9 +43,17 @@ python -m pytest tests/test_step1_data.py::TestDbManager -v
 python -m pytest tests/test_step2_analysis.py::TestSignalLogger::test_check_q1_pass_when_positive_trend -v
 ```
 
+## 현재 테스트 상태
+
+```
+53 passed, 6 skipped (2026-04-03 기준)
+```
+
+- 6 skipped = infra_map.py pyvis 관련 (의도적 스킵)
+
 ## TDD 사이클
 
-1. **RED** → 지금 상태: 모든 테스트 실패
+1. **RED** → 테스트 먼저 작성, 실패 확인
 2. **GREEN** → 함수 구현 후 테스트 통과
 3. **REFACTOR** → 코드 정리 (테스트는 계속 통과)
 
